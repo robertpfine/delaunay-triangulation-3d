@@ -40,6 +40,33 @@ Vector3d<T>::norm2() const
 	return x * x + y * y+ z * z;
 }
 
+
+template<typename T>
+T
+Vector3d<T>::dot(const Vector3d<T> &vertexA, const Vector3d<T> &vertexB) const
+{
+    //std::cout << " dot Product: " << (vertexA.x * vertexB.x + vertexA.y * vertexB.y + vertexA.z * vertexB.z) << std::endl;
+    return (vertexA.x * vertexB.x + vertexA.y * vertexB.y + vertexA.z * vertexB.z);
+}
+
+
+
+template<typename T>
+T
+Vector3d<T>::crossProd(const dt::Vector3d<T> &u, const dt::Vector3d<T> &v) const
+{
+    dt::Vector3d<T> cprod;
+    cprod.x = u.y * v.z - u.z * v.y;
+    cprod.y = -(u.x * v.z - u.z * v.x);
+    cprod.z = u.x * v.y - u.y * v.x;
+
+    return (cprod.x, cprod.y, cprod.z);
+
+};
+
+
+
+
 template<typename T>
 bool
 Vector3d<T>::operator ==(const Vector3d<T> &v) const

@@ -22,6 +22,10 @@ struct Vector3d
 	T dist(const Vector3d<T> &v) const;
 	T norm2() const;
 
+    T dot(const Vector3d<T> &vertexA, const Vector3d<T> &vertexB) const;
+    T crossProd(const Vector3d<T> &u, const Vector3d<T> &v) const;
+    //T cprod;
+
 	Vector3d &operator=(const Vector3d<T>&) = default;
 	Vector3d &operator=(Vector3d&&) = default;
 	bool operator ==(const Vector3d<T> &v) const;
