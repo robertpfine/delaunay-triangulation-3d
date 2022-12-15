@@ -14,7 +14,7 @@
 
 int main(int argc, char * argv[])
 {
-	int numberPoints = 40;
+	int numberPoints = 400;
 	if (argc>1)
 	{
 		numberPoints = atoi(argv[1]);
