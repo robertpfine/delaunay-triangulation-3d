@@ -8,13 +8,13 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "vector2.h"
-#include "triangle.h"
-#include "delaunay.h"
+#include "vector3d.h"
+#include "triangle3d.h"
+#include "delaunay3d.h"
 
 int main(int argc, char * argv[])
 {
-	int numberPoints = 400;
+	int numberPoints = 10;
 	if (argc>1)
 	{
 		numberPoints = atoi(argv[1]);
@@ -23,23 +23,43 @@ int main(int argc, char * argv[])
 	std::default_random_engine eng(std::random_device{}());
 	std::uniform_real_distribution<double> dist_w(0, 800);
 	std::uniform_real_distribution<double> dist_h(0, 600);
+    std::uniform_real_distribution<double> dist_d(0, 25);
 
 	std::cout << "Generating " << numberPoints << " random points" << std::endl;
 
-	std::vector<dt::Vector2<double>> points;
+	std::vector<dt::Vector3d<double>> points;
 	for(int i = 0; i < numberPoints; ++i) {
-		points.push_back(dt::Vector2<double>{dist_w(eng), dist_h(eng)});
+		points.push_back(dt::Vector3d<double>{dist_w(eng), dist_h(eng), dist_d(eng)});
+
+        std::cout
+                << "position x: " << points[i].x
+                << " position y: " << points[i].y
+                << " position z: " << points[i].z
+                << std::endl;
 	}
 
-	dt::Delaunay<double> triangulation;
+	dt::Delaunay3d<double> triangulation;
 	const auto start = std::chrono::high_resolution_clock::now();
-	const std::vector<dt::Triangle<double>> triangles = triangulation.triangulate(points);
+	const std::vector<dt::Triangle3d<double>> triangles = triangulation.triangulate(points);
 	const auto end = std::chrono::high_resolution_clock::now();
 	const std::chrono::duration<double> diff = end - start;
 
 	std::cout << triangles.size() << " triangles generated in " << diff.count()
 			<< "s\n";
-	const std::vector<dt::Edge<double>> edges = triangulation.getEdges();
+
+    for(int i = 0; i < triangles.size(); ++i) {
+        //for(int j = 0; j < 3; j++)
+        //    for(int m = 0; m < 2; m++)
+
+        std::cout << "triangle: " << i <<  " "
+                  << "vertex 1:" <<  "position x: " << triangles[i].a->x << " position y: " << triangles[i].a->y << " position z: " << triangles[i].a->z
+                  << "vertex 2:" <<  "position x: " << triangles[i].b->x << " position y: " << triangles[i].b->y << " position z: " << triangles[i].b->z
+                  << "vertex 3:" <<  "position x: " << triangles[i].c->x << " position y: " << triangles[i].c->y << " position z: " << triangles[i].c->z
+                  << std::endl;
+    }
+
+
+    const std::vector<dt::Edge3d<double>> edges = triangulation.getEdges();
 
 	// SFML window
 	sf::RenderWindow window(sf::VideoMode(800, 600), "Delaunay triangulation");

@@ -21,7 +21,7 @@ struct Edge3d
 	bool operator ==(const Edge3d &e) const;
 
 	template<typename U>
-	friend std::ostream &operator <<(std::ostream &str, const Edge<U> &e);
+	friend std::ostream &operator <<(std::ostream &str, const Edge3d<U> &e);
 
 	const VertexType *v;
 	const VertexType *w;
