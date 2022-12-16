@@ -3,8 +3,7 @@
 namespace dt {
 
 template<typename T>
-const std::vector<typename Delaunay3d<T>::TriangleType>&
-Delaunay3d<T>::triangulate(std::vector<VertexType> &vertices)
+const std::vector<typename Delaunay3d<T>::TriangleType>&Delaunay3d<T>::triangulate(std::vector<VertexType> &vertices)
 {
 	// Store the vertices locally
 	_vertices = vertices;

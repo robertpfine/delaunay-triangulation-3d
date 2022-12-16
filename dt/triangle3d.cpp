@@ -16,7 +16,7 @@ Triangle3d<T>::containsVertex(const VertexType &v) const
 	return almost_equal(*a, v) || almost_equal(*b, v) || almost_equal(*c, v);
 }
 
-template<typename T>
+template<class T>
 bool
 Triangle3d<T>::circumCircleContains(const VertexType &v) const
 {
@@ -38,7 +38,7 @@ Triangle3d<T>::circumCircleContains(const VertexType &v) const
 
 	const T circum_x = (ab * (cy - by) + cd * (ay - cy) + ef * (by - ay)) / (ax * (cy - by) + bx * (ay - cy) + cx * (by - ay));
 	const T circum_y = (ab * (cx - bx) + cd * (ax - cx) + ef * (bx - ax)) / (ay * (cx - bx) + by * (ax - cx) + cy * (bx - ax));
-    const T circum_z = 0;
+    //const T circum_z = 0;
 
 
     const T sideAx = ax - cx;
@@ -53,8 +53,10 @@ Triangle3d<T>::circumCircleContains(const VertexType &v) const
     const VertexType sideB(sideBx, sideBy, sideBz);
 
 
-    const VertexType crossProd(sideA, sideB);
-    //std::cout << " crossProd Test RRRRRRRRRRRRRRRRRR: " << cprod << std::endl;
+    dt::Vector3d<T> cprod;
+    dt::Vector3d<T> TEST;
+    //TEST = Vector3d<T>::cprod.crossProd(sideA, sideB);
+    //std::cout << " crossProd Test RRRRRRRRRRRRRRRRRR: " << dt::Vector3d<T>::cprod << std::endl;
 
 
 	const VertexType circum(circum_x / 2, circum_y / 2, 0);

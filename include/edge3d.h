@@ -6,8 +6,10 @@
 namespace dt {
 
 template<typename T>
-struct Edge3d
+class Edge3d
 {
+public:
+
 	using Type = T;
 	using VertexType = Vector3d<Type>;
 

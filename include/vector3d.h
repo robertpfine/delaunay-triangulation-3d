@@ -10,12 +10,16 @@
 namespace dt {
 
 template<typename T>
-struct Vector3d
+class Vector3d
 {
-	using Type = T;
+public:
+
+    using Type = T;
 	Vector3d() = default;
 	Vector3d(const Vector3d<T> &v) = default;
-	Vector3d(Vector3d<T>&&) = default;
+    //Vector3d(const Vector3d<T> &v);
+
+    Vector3d(Vector3d<T>&&) = default;
 	Vector3d(const T vx, const T vy, const T vz);
 
 	T dist2(const Vector3d<T> &v) const;
@@ -29,7 +33,7 @@ struct Vector3d
 
     T dot(const Vector3d<T> &vertexA, const Vector3d<T> &vertexB) const;
     Vector3d<T> crossProd(const Vector3d<T> &u, const Vector3d<T> &v) const;
-    //dt::Vector3d<T> cprod;
+    //Vector3d<T> cprod;
 
 
 

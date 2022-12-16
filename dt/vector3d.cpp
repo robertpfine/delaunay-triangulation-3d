@@ -51,8 +51,8 @@ Vector3d<T>::dot(const Vector3d<T> &vertexA, const Vector3d<T> &vertexB) const
 
 
 
-template<typename T>
-Vector3d<T> crossProd(const dt::Vector3d<T> &u, const dt::Vector3d<T> &v)
+template<class T>
+Vector3d<T> Vector3d<T>::crossProd(const dt::Vector3d<T> &u, const dt::Vector3d<T> &v) const
 {
         Vector3d<T> cprod;
 
@@ -60,7 +60,7 @@ Vector3d<T> crossProd(const dt::Vector3d<T> &u, const dt::Vector3d<T> &v)
         cprod.y = -(u.x * v.z - u.z * v.x);
         cprod.z = u.x * v.y - u.y * v.x;
 
-        return cprod.push_back(Vector3d<T>(cprod.x, cprod.y, cprod.z));
+        //return cprod.push_back(Vector3d<T>(cprod.x, cprod.y, cprod.z));
 };
 
 

@@ -13,6 +13,9 @@ namespace dt {
 template<typename T>
 class Delaunay3d
 {
+
+public:
+
 	using Type = T;
 	using VertexType = Vector3d<Type>;
 	using EdgeType = Edge3d<Type>;
