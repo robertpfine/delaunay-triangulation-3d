@@ -1,3 +1,4 @@
+#include "vector3d.h"
 #include "triangle3d.h"
 
 namespace dt {
@@ -38,6 +39,23 @@ Triangle3d<T>::circumCircleContains(const VertexType &v) const
 	const T circum_x = (ab * (cy - by) + cd * (ay - cy) + ef * (by - ay)) / (ax * (cy - by) + bx * (ay - cy) + cx * (by - ay));
 	const T circum_y = (ab * (cx - bx) + cd * (ax - cx) + ef * (bx - ax)) / (ay * (cx - bx) + by * (ax - cx) + cy * (bx - ax));
     const T circum_z = 0;
+
+
+    const T sideAx = ax - cx;
+    const T sideAy = ay - cy;
+    const T sideAz = az - cz;
+
+    const T sideBx = bx - cx;
+    const T sideBy = by - cy;
+    const T sideBz = bz - cz;
+
+    const VertexType sideA(sideAx, sideAy, sideAz);
+    const VertexType sideB(sideBx, sideBy, sideBz);
+
+
+    const VertexType crossProd(sideA, sideB);
+    //std::cout << " crossProd Test RRRRRRRRRRRRRRRRRR: " << cprod << std::endl;
+
 
 	const VertexType circum(circum_x / 2, circum_y / 2, 0);
 	const T circum_radius = a->dist2(circum);

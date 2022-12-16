@@ -12,6 +12,9 @@
 #include "triangle3d.h"
 #include "delaunay3d.h"
 
+
+//dt::Vector3d TestTempInstan;
+
 int main(int argc, char * argv[])
 {
 	int numberPoints = 10;

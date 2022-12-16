@@ -34,6 +34,8 @@ struct Triangle3d
 	const VertexType *c;
 	bool isBad = false;
 
+    //const dt::Vector3d<T> cprod;
+
 	static_assert(std::is_floating_point<Triangle3d<T>::Type>::value,
 		"Type must be floating-point");
 };
