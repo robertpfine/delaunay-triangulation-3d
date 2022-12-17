@@ -1,4 +1,5 @@
 #include "vector3d.h"
+#include "triangle3d.h"
 
 namespace dt {
 
@@ -54,13 +55,13 @@ Vector3d<T>::dot(const Vector3d<T> &vertexA, const Vector3d<T> &vertexB) const
 template<class T>
 Vector3d<T> Vector3d<T>::crossProd(const dt::Vector3d<T> &u, const dt::Vector3d<T> &v) const
 {
-        Vector3d<T> cprod;
+        //const Vector3d<T> test;
 
-        cprod.x = u.y * v.z - u.z * v.y;
-        cprod.y = -(u.x * v.z - u.z * v.x);
-        cprod.z = u.x * v.y - u.y * v.x;
+        T x = u.y * v.z - u.z * v.y;
+        T y = -(u.x * v.z - u.z * v.x);
+        T z = u.x * v.y - u.y * v.x;
 
-        //return cprod.push_back(Vector3d<T>(cprod.x, cprod.y, cprod.z));
+        return  Vector3d<T> (x, y, z);
 };
 
 

@@ -36,7 +36,7 @@ public:
 	const VertexType *c;
 	bool isBad = false;
 
-    //const Vector3d<T> cprod;
+    //const VertexType _cprod{};
 
 	static_assert(std::is_floating_point<Triangle3d<T>::Type>::value,
 		"Type must be floating-point");

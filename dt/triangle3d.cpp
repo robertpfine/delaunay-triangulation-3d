@@ -53,10 +53,14 @@ Triangle3d<T>::circumCircleContains(const VertexType &v) const
     const VertexType sideB(sideBx, sideBy, sideBz);
 
 
-    dt::Vector3d<T> cprod;
+    dt::Vector3d<T> _cprod;
     dt::Vector3d<T> TEST;
-    //TEST = Vector3d<T>::cprod.crossProd(sideA, sideB);
-    //std::cout << " crossProd Test RRRRRRRRRRRRRRRRRR: " << dt::Vector3d<T>::cprod << std::endl;
+    TEST = _cprod.crossProd(sideA, sideB);
+    std::cout << " " << "RRRRRRRRRRRRRRRRRRRRRRRRR crossProd"
+    << " Test.x: " << TEST.x
+    << " Test.y: " << TEST.y
+    << " Test.z: " << TEST.z
+    << std::endl;
 
 
 	const VertexType circum(circum_x / 2, circum_y / 2, 0);
