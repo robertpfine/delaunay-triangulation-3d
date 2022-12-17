@@ -52,6 +52,18 @@ Vector3d<T>::dot(const Vector3d<T> &vertexA, const Vector3d<T> &vertexB) const
 
 
 
+
+template<class T>
+T
+Vector3d<T>::norm(const Vector3d<T> &v) const
+    {
+        return sqrt(x * x + y * y + z * z);
+    }
+
+
+
+
+
 template<class T>
 Vector3d<T> Vector3d<T>::crossProd(const dt::Vector3d<T> &u, const dt::Vector3d<T> &v) const
 {

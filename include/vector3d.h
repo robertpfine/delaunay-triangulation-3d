@@ -31,7 +31,10 @@ public:
 
 
 
+    T norm(const Vector3d<T> &v) const;
+
     T dot(const Vector3d<T> &vertexA, const Vector3d<T> &vertexB) const;
+
     Vector3d<T> crossProd(const Vector3d<T> &u, const Vector3d<T> &v) const;
     //dt::Vector3d<T> &test;
 
