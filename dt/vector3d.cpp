@@ -57,7 +57,7 @@ template<class T>
 T
 Vector3d<T>::norm(const Vector3d<T> &v) const
     {
-        return sqrt(x * x + y * y + z * z);
+        return sqrt({v.x * v.x + v.y * v.y + v.z * v.z});
     }
 
 
@@ -124,6 +124,16 @@ Vector3d<T>::operator ^(const Vector3d<T> &v) const
     {
         return Vector3d<T> (this->x / v.x, this->y / v.y, this->z / v.z);
     }
+
+    template<class T>
+    Vector3d<T>
+    Vector3d<T>::operator /(const T &v) const
+    {
+        return Vector3d<T> (this->x / v, this->y / v, this->z / v);
+    }
+
+
+
 
 
 template<typename T>

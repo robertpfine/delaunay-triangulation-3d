@@ -42,25 +42,26 @@ Triangle3d<T>::circumCircleContains(const VertexType &v) const
 
 
     const T sideAx = ax - cx;
+    std::cout << " sideAx: " << sideAx << std::endl;
     const T sideAy = ay - cy;
+    std::cout << " sideAy: " << sideAy << std::endl;
     const T sideAz = az - cz;
+    std::cout << " sideAz: " << sideAz << std::endl;
 
     const T sideBx = bx - cx;
     const T sideBy = by - cy;
     const T sideBz = bz - cz;
 
-    const VertexType sideA(sideAx, sideAy, sideAz);
+    const Vector3d<T> sideA(sideAx, sideAy, sideAz);
+    std::cout << " sideA.x: " << sideA.x << std::endl;
+
     const VertexType sideB(sideBx, sideBy, sideBz);
 
 
-    dt::Vector3d<T> cprod;
-    dt::Vector3d<T> TEST;
-    TEST = cprod.crossProd(sideA, sideB);
-    std::cout << " " << "RRRRRRRRRRRRRRRRRRRRRRRRR crossProd"
-    << " Test.x: " << TEST.x
-    << " Test.y: " << TEST.y
-    << " Test.z: " << TEST.z
-    << std::endl;
+    //dt::Vector3d<T> cprod;
+    //dt::Vector3d<T> TEST;
+    //TEST = cprod.crossProd(sideA, sideB);
+
 
     dt::Vector3d<T> _cprod;
     //T norm_a;
@@ -68,19 +69,51 @@ Triangle3d<T>::circumCircleContains(const VertexType &v) const
     //T norm_a_cross_b{};
 
     T norm_a = _cprod.norm(sideA);
+    std::cout << " " << "RRRRRRRRRRRRRRRRRRRRRRRRR"
+              << " norm_a: " << norm_a << std::endl;
+
+
+
     T norm_a_square = norm_a * norm_a;
+    Vector3d<T> norm_a_square_times_SideB = _cprod.scalarTimesVector(norm_a_square, sideB);
+    std::cout << " " << "RRRRRRRRRRRRRRRRRRRRRRRRR norm_a_square_times_SideB"
+              << " norm_a_square_times_SideB.x: " << norm_a_square_times_SideB.x
+              << " norm_a_square_times_SideB.y: " << norm_a_square_times_SideB.y
+              << " norm_a_square_times_SideB.z: " << norm_a_square_times_SideB.z
+              << std::endl;
+
+
+
     T norm_b = _cprod.norm(sideB);
     T norm_b_square = norm_a * norm_b;
+    Vector3d<T> norm_b_square_times_SideA = _cprod.scalarTimesVector(norm_b_square, sideA);
+
+    Vector3d<T> norm_a_square_b_minus_norm_b_square_a = norm_a_square_times_SideB - norm_b_square_times_SideA;
+
     Vector3d<T> a_cross_b = _cprod.crossProd(sideA, sideB);
-    Vector3d<T> a_cross_b_square = a_cross_b^a_cross_b;
-    Vector3d<T> axb_square_times_2 = _cprod.scalarTimesVector(2, a_cross_b_square);
+    Vector3d<T> numerator = _cprod.crossProd(norm_a_square_b_minus_norm_b_square_a, a_cross_b);
+
+    T norm_a_cross_b = _cprod.norm(a_cross_b);
+    T denominator = 2. * (norm_a_cross_b * norm_a_cross_b);
+
+    Vector3d<T> vertexC(cx, cy, cz);
+
+    Vector3d<T> circumCenter = (numerator / denominator) + vertexC;
+
+    std::cout << " " << "RRRRRRRRRRRRRRRRRRRRRRRRR circumCenter"
+              << " circumCenter.x: " << circumCenter.x
+              << " circumCenter.y: " << circumCenter.y
+              << " circumCenter.z: " << circumCenter.z
+              << std::endl;
+
+    //Vector3d<T> axb_square_times_2 = _cprod.scalarTimesVector(2, a_cross_b_square);
 
 
-    const VertexType vertexC(cx, cy, cz);
 
-    const VertexType circumCenter =
-            -cprod.crossProd(_cprod.scalarTimesVector(norm_a * norm_a, sideB ))
-                - _cprod.scalarTimesVector(norm_b * norm_b, sideA )), _cprod.crossProd(sideA, sideB));
+
+    //const VertexType circumCenter =
+    //       -cprod.crossProd(_cprod.scalarTimesVector(norm_a * norm_a, sideB ))
+    //            - _cprod.scalarTimesVector(norm_b * norm_b, sideA )), _cprod.crossProd(sideA, sideB));
 
 
 

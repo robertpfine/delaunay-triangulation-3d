@@ -46,6 +46,7 @@ public:
     Vector3d<T> operator -(const Vector3d<T> &v) const;
     Vector3d<T> operator ^(const Vector3d<T> &v) const;
     Vector3d<T> operator /(const Vector3d<T> &v) const;
+    Vector3d<T> operator /(const T &v) const;
 
 
     Vector3d &operator=(const Vector3d<T>&) = default;
