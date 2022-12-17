@@ -36,7 +36,7 @@ Vector3d<double>::dist(const Vector3d<double> &v) const
 
 template<typename T>
 T
-Vector3d<T>::norm2() const
+Vector3d<T>::norm3() const
 {
 	return x * x + y * y+ z * z;
 }
@@ -53,14 +53,19 @@ Vector3d<T>::dot(const Vector3d<T> &vertexA, const Vector3d<T> &vertexB) const
 
 
 
-template<class T>
-T
-Vector3d<T>::norm(const Vector3d<T> &v) const
+    template<class T>
+    T
+    Vector3d<T>::norm(const Vector3d<T> &v) const
     {
         return sqrt({v.x * v.x + v.y * v.y + v.z * v.z});
     }
 
-
+    template<class T>
+    T
+    Vector3d<T>::norm2(const Vector3d<T> &u, const Vector3d<T> &v) const
+    {
+        return sqrt({((u.x - v.x) * (u.x - v.x)) + ((u.y - v.y) * (u.y - v.y)) + ((u.x - v.z) * (u.z - v.z))});
+    }
 
 
 

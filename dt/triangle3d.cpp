@@ -20,9 +20,9 @@ template<class T>
 bool
 Triangle3d<T>::circumCircleContains(const VertexType &v) const
 {
-	const T ab = a->norm2();
-	const T cd = b->norm2();
-	const T ef = c->norm2();
+	const T ab = a->norm3();
+	const T cd = b->norm3();
+	const T ef = c->norm3();
 
 	const T ax = a->x;
 	const T ay = a->y;
@@ -118,19 +118,27 @@ Triangle3d<T>::circumCircleContains(const VertexType &v) const
 
 
 
+    const T circum_radius2 = _cprod.norm2(vertexC,circumCenter);
+    std::cout << " circumRadius2: " << circum_radius2 << std::endl;
+
+    const T circumCenterToPoint = _cprod.norm2(v,circumCenter);
+    std::cout << " centerToPoint: " << circumCenterToPoint << std::endl;
+
+    return circumCenterToPoint <= circum_radius2;
+
+    //const VertexType circum(circum_x / 2, circum_y / 2, 0);
+    //const T circum_radius = a->dist2(circum);
+    //const T dist = v.dist2(circum);
+    //return dist <= circum_radius;
 
 
 
 
 
-
-
-
-
-	const VertexType circum(circum_x / 2, circum_y / 2, 0);
+	/*const VertexType circum(circum_x / 2, circum_y / 2, 0);
 	const T circum_radius = a->dist2(circum);
 	const T dist = v.dist2(circum);
-	return dist <= circum_radius;
+	return dist <= circum_radius;*/
 }
 
 template<typename T>

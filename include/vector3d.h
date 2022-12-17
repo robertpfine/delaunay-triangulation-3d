@@ -24,7 +24,7 @@ public:
 
 	T dist2(const Vector3d<T> &v) const;
 	T dist(const Vector3d<T> &v) const;
-	T norm2() const;
+	T norm3() const;
 
 
 
@@ -32,6 +32,7 @@ public:
 
 
     T norm(const Vector3d<T> &v) const;
+    T norm2(const Vector3d<T> &u, const Vector3d<T> &v) const;
 
     T dot(const Vector3d<T> &vertexA, const Vector3d<T> &vertexB) const;
 

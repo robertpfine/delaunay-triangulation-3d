@@ -17,7 +17,7 @@
 
 int main(int argc, char * argv[])
 {
-	int numberPoints = 10;
+	int numberPoints = 15;
 	if (argc>1)
 	{
 		numberPoints = atoi(argv[1]);
@@ -26,7 +26,7 @@ int main(int argc, char * argv[])
 	std::default_random_engine eng(std::random_device{}());
 	std::uniform_real_distribution<double> dist_w(0, 800);
 	std::uniform_real_distribution<double> dist_h(0, 600);
-    std::uniform_real_distribution<double> dist_d(0, 25);
+    std::uniform_real_distribution<double> dist_d(0, 5);
 
 	std::cout << "Generating " << numberPoints << " random points" << std::endl;
 
