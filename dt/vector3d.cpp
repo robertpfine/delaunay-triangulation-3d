@@ -74,9 +74,56 @@ Vector3d<T> Vector3d<T>::crossProd(const dt::Vector3d<T> &u, const dt::Vector3d<
         T z = u.x * v.y - u.y * v.x;
 
         return  Vector3d<T> (x, y, z);
-};
+}
 
 
+
+template<class T>
+Vector3d<T> Vector3d<T>::scalarTimesVector(const T &u, const Vector3d<T>  &v) const
+{
+
+        T x = u * v.x;
+        T y = u * v.y;
+        T z = u * v.z;
+
+        return Vector3d<T> (x, y, z);
+
+}
+
+
+    template<class T>
+    Vector3d<T>
+    Vector3d<T>::operator +(const Vector3d<T> &v) const
+    {
+        return Vector3d<T> (this->x + v.x, this->y + v.y, this->z + v.z);
+    }
+
+
+
+
+template<class T>
+Vector3d<T>
+Vector3d<T>::operator -(const Vector3d<T> &v) const
+    {
+        return Vector3d<T> (this->x - v.x, this->y - v.y, this->z - v.z);
+    }
+
+
+
+template<class T>
+Vector3d<T>
+Vector3d<T>::operator ^(const Vector3d<T> &v) const
+    {
+        return Vector3d<T> (this->x * v.x, this->y * v.y, this->z * v.z);
+    }
+
+
+    template<class T>
+    Vector3d<T>
+    Vector3d<T>::operator /(const Vector3d<T> &v) const
+    {
+        return Vector3d<T> (this->x / v.x, this->y / v.y, this->z / v.z);
+    }
 
 
 template<typename T>

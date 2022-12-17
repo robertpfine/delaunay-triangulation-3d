@@ -68,8 +68,21 @@ Triangle3d<T>::circumCircleContains(const VertexType &v) const
     //T norm_a_cross_b{};
 
     T norm_a = _cprod.norm(sideA);
+    T norm_a_square = norm_a * norm_a;
     T norm_b = _cprod.norm(sideB);
-    T norm_a_cross_b;
+    T norm_b_square = norm_a * norm_b;
+    Vector3d<T> a_cross_b = _cprod.crossProd(sideA, sideB);
+    Vector3d<T> a_cross_b_square = a_cross_b^a_cross_b;
+    Vector3d<T> axb_square_times_2 = _cprod.scalarTimesVector(2, a_cross_b_square);
+
+
+    const VertexType vertexC(cx, cy, cz);
+
+    const VertexType circumCenter =
+            -cprod.crossProd(_cprod.scalarTimesVector(norm_a * norm_a, sideB ))
+                - _cprod.scalarTimesVector(norm_b * norm_b, sideA )), _cprod.crossProd(sideA, sideB));
+
+
 
 
 
